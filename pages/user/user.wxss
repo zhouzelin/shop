@@ -1,0 +1,50 @@
+/**user.wxss**/
+.main {
+    width:100%;
+    background:#eee;
+    position:absolute;
+    top:0;
+    bottom:0;
+}
+.user-wrapper {
+    background-color: #168FED;
+    height: 100pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.user-wrapper .img-box {
+  width: 50pt;
+  height: 50pt;
+  border: 1pt #fff solid;
+  border-radius: 50%;
+  object-fit: contain;
+  overflow: hidden;
+  margin-bottom: 10pt;
+}
+.user-wrapper .img-box image {
+  width: 100%;
+  height: 100%;
+}
+.user-wrapper .nick-name {
+    font-size: 12pt;
+    color: #fff;
+}
+.block-wrapper {
+    margin-top: 10pt;
+    border-top: 1pt #ddd solid;
+    border-bottom: 1pt #ddd solid;
+    padding: 0 8pt;
+    background: #fff;
+}
+.block-wrapper .item-block {
+    border-bottom: 1pt #ddd solid;
+    height: 34pt;
+    line-height: 34pt;
+}
+.block-wrapper .item-block:last-child {
+    border-bottom: none;
+}
+
+

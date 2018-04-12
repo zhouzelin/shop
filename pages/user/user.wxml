@@ -1,0 +1,26 @@
+<view class="main">
+    <view class="user-wrapper">
+        <view class="img-box">
+            <image src="{{userInfo.avatarUrl}}"></image>
+        </view>
+        <view class="nick-name">{{userInfo.nickName}}</view>
+    </view>
+    <view class="block-wrapper">
+        <view class="item-block" bindtap="openScan">
+            <text>扫一扫</text>
+        </view>
+        <view class="item-block" bindtap="openMap">
+            <text>打开地图</text>
+        </view>
+    </view>
+    <view class="block-wrapper">
+        <view class="item-block" bindtap="makeCall">
+            <text>打电话</text>
+        </view>  
+    </view>
+     <view class="block-wrapper">
+        <view class="item-block" bindtap="openWeb">
+            <text>打H5页面</text>
+        </view> 
+    </view>
+</view>

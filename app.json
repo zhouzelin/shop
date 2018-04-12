@@ -1,0 +1,26 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/user/user",
+    "pages/community/community",
+    "pages/home/eatWhat"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#168FED",
+    "navigationBarTitleText": "微邻",
+    "navigationBarTextStyle": "light",
+    "backgroundColorTop": "#ffffff"
+  },
+  "tabBar": {
+    "selectedColor": "#168FED",
+    "list": [{
+      "pagePath": "pages/home/home",
+      "text": "首页"
+    }, 
+    {
+      "pagePath": "pages/user/user",
+      "text": "个人中心"
+    }]
+  }
+}

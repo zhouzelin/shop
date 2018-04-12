@@ -1,0 +1,80 @@
+/*eatWhat.wxss*/
+.mian {
+    overflow: hidden;
+}
+.user-box {
+    margin-top: 40pt;
+    text-align: center;
+}
+.user-box .img-box {
+    width: 50pt;
+    height: 50pt;
+    border: 1pt #fff solid;
+    border-radius: 50%;
+    object-fit: contain;
+    overflow: hidden;
+    margin: 0 auto 10pt;
+}
+.user-box .img-box image {
+    width: 100%;
+    height: 100%;
+}
+.user-box .nick-name {
+    font-size: 10pt;
+    color: #666;
+}
+.content {
+    text-align: center;
+    margin-top: 50pt; 
+}
+.btn-box {
+    margin-top: 20pt;
+    text-align:center;
+}
+.btn-box .btn {
+    display: inline-block;
+    padding: 0 12pt;
+    height: 24pt;
+    line-height: 24pt;
+    text-align: center;
+    border-radius: 12pt;
+    background: #168FED;
+    color: #fff;
+    font-size: 10pt;
+    margin: 0 auto;
+}
+.btn-box .reset {
+    font-size: 8pt;
+    color: #666;
+    margin-top: 5pt;
+}
+.reset-wrapper {
+    background: #fff;
+    padding: 10pt;
+}
+.reset-wrapper textarea {
+    border: 1pt solid #ddd;
+    border-radius: 2pt;
+    padding: 5pt;
+    width: auto;
+    font-size: 10pt;
+}
+.reset-wrapper .reset-tips {
+    font-size: 8pt;
+    margin-top: 5pt;
+    color: #999;
+}
+.reset-wrapper .btn-wrapper {
+    text-align: center;
+}
+.reset-wrapper .btn-wrapper .btn {
+    border-radius: 2pt;
+    border: 1pt solid #168FED;
+    color: #168FED;
+    display: inline-block;
+    height: 16pt;
+    font-size: 10pt;
+    line-height: 16pt;
+    padding: 0 5pt;
+    margin: 10pt auto 0;
+}
