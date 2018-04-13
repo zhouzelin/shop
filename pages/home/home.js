@@ -14,10 +14,11 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    newData: {}
+    newData: {},
+    loading: true
   },
   onLoad() {
-    
+
   },
   onReady() {
     this.getNews();
@@ -26,30 +27,46 @@ Page({
     let url = 'eatWhat';
     utils.gotoPage(url);
   },
-  getNews() {
+  onPullDownRefresh: function () {
+    this.setData({
+      loading: true
+    })
+    this.getNews(function(){
+      wx.stopPullDownRefresh();
+    })
+  },
+  getNews(callback) {
     let url = 'https://m.toutiao.com/list/';
     let data = {
-      tag:"__all__",
-      ac:"wap",
-      count:20,
-      format:"json_raw",
-      as:"A1851A0D60A247F",
-      cp:"5AD01254474F2E1",
-      min_behot_time:"1523589968",
-      _signature:"LAchiQAAdt17MGnSlGipYSwHIZ",
-      i:"1523589968"
+      tag: "__all__",
+      ac: "wap",
+      count: 20,
+      format: "json_raw",
+      as: "A1851A0D60A247F",
+      cp: "5AD01254474F2E1",
+      min_behot_time: "1523589968",
+      i: "1523589968"
     }
     let self = this;
-    utils.get(url,data).
-    then(res=> {
-      console.log(res.data);
-      self.setData({
-        newData: res.data.data
+    utils.get(url, data).
+      then(res => {
+        console.log(res.data);
+        self.setData({
+          newData: res.data.data
+        })
+        if(callback) {
+          callback()
+        }
+        this.setData({
+          loading: false
+        })
+      }).
+      catch(res => {
+        console.log(res);
       })
-    })
   },
   gotoNesDtail(event) {
     let dataset = event.currentTarget.dataset;
-    utils.gotoPage('newDetail',{url:dataset.url});
+    utils.gotoPage('newDetail', { url: dataset.url });
   }
 })

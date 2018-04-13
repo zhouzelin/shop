@@ -1,0 +1,11 @@
+<view class="modal">
+		<view class="modal-content">
+				<view class="didi_loader">
+						<view></view>
+						<view></view>
+						<view></view>
+						<view></view>
+				</view>
+				<view class="tips_loader"></view>
+		</view>
+</view>

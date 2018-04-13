@@ -1,3 +1,8 @@
 {
-    "navigationBarTitleText": "周助手"
+    "navigationBarTitleText": "周助手",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "usingComponents": {
+        "loader": "../components/loader/loader"
+    }
 }

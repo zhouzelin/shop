@@ -70,4 +70,5 @@
       </view>
     </block>
   </view>
+  <loader wx:if="{{loading}}"/>
 </view>

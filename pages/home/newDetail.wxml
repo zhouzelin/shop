@@ -11,4 +11,5 @@
         </view>
     </view>
     <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+    <loader wx:if="{{loading}}"/>
 </view>

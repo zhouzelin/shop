@@ -28,10 +28,6 @@
 .article-resource .content-box .title,.article-resource .content-box .desc{
   font-size: 10pt;
 }
-.wxParse-inline {
-  display: inline-block;
-  text-indent: 2em;
-}
 .wxParse-p {
   margin: 10pt 0;
 }

@@ -9,6 +9,7 @@ Page({
         url: '',
         content: "",
         detail: {},
+        loading: true
     },
     onLoad(options) {
         let url = options.url;
@@ -23,7 +24,7 @@ Page({
         let url = `https://m.toutiao.com/i${this.data.url}/info/`
         console.log(url)
         var data = {
-            _signature:"GDojwhAXQu5PDWuZhE08nxg6I9"
+            i:this.data.url
         }
         utils.get(url,data).
         then(res => {
@@ -34,7 +35,8 @@ Page({
             })
             this.setData({
                 content: WxParse.wxParse('content', 'html', detail.content.replace("视频加载中...",""), this),
-                detail: detail
+                detail: detail,
+                loading: false
             })
         })
     }
