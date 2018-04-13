@@ -85,5 +85,6 @@ module.exports = {
   parseUrl: parseUrl,  
   gotoPage: gotoPage, // 页面跳转
   get: get, // get请求
-  post: post // post请求
+  post: post, // post请求
+  wxPromisify: wxPromisify // 请求 promise 化
 }
