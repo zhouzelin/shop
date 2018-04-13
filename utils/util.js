@@ -73,27 +73,17 @@ const post = (url, data) => {
   })
 }
 
-const wxPromisify = (fn) => {
-  return function (obj = {}) {
-    return new Promise((resolve, reject) => {
-      obj.success = function (res) {
-        //成功
-        resolve(res)
-      }
-      obj.fail = function (res) {
-        //失败
-        reject(res)
-      }
-      fn(obj)
-    })
-  }
-}
+const wxPromisify = fn => (obj = {}) => new Promise((resolve, reject) => {
+  obj.success = res => resolve(res) // 成功
+  obj.fail = res => reject(res) // 失败
+  fn(obj)
+})
 
 module.exports = {
   formatTime: formatTime,
-  formatDate: formatDate,
-  parseUrl: parseUrl,
-  gotoPage: gotoPage,
-  get: get,
-  post: post
+  formatDate: formatDate, // 日期格式化
+  parseUrl: parseUrl,  
+  gotoPage: gotoPage, // 页面跳转
+  get: get, // get请求
+  post: post // post请求
 }
