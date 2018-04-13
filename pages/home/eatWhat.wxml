@@ -11,7 +11,7 @@
     <view class="btn-box">
         <view class="btn" bindtap="switchFood" wx:if="{{isStart}}">停止</view>
         <view class="btn" bindtap="switchFood" wx:else>不行，换一个</view>
-        <view class="reset" bindtap="openMask">自定义后选菜单</view>
+        <view class="reset" bindtap="openMask">自定义候选菜单</view>
     </view>
     <view class="mask" wx:if="{{isOpen}}">
         <view class="reset-wrapper">

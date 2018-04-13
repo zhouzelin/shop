@@ -2,7 +2,7 @@
 <view class="container">
   <!--广告图-->
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{imgUrls}}">
+    <block wx:for="{{imgUrls}}" wx:key="index">
       <swiper-item>
         <image src="{{item}}" class="slide-image" />
       </swiper-item>
@@ -58,25 +58,16 @@
   <!--今日热点-->
   <view class="news-wrapper">
     <view class="news-title">—— 头条热点 ——</view>
-    <view class="news-box">
-      <view class="content-box">
-        <view class="ms limitline2">时代之问 博鳌作答</view>
-        <view class="ss">央视新闻 171评论</view>  
+    <block wx:for="{{newData}}" wx:key="index">
+      <view class="news-box" bindtap="gotoNesDtail" data-url="{{item.source_url}}">
+        <view class="content-box">
+          <view class="ms limitline2">{{item.title}}</view>
+          <view class="ss">{{item.media_name}} {{item.comment_count}}评论</view>  
+        </view>
+        <view class="icon-box" wx:if="{{item.image_url}}">
+          <image src="{{item.image_url}}"></image>
+        </view>
       </view>
-      <view class="icon-box"></view>
-    </view>
-    <view class="news-box">
-      <view class="content-box">
-        <view class="ms limitline2">中美是否有谈判的可能？商务部这样回应</view>
-        <view class="ss">环球网 24评论</view>  
-      </view>
-    </view>
-    <view class="news-box">
-      <view class="content-box">
-        <view class="ms limitline2">“美俄关系最危险的时刻”，伊朗誓言将替叙利亚报复以色列叙利亚报复以色列叙利亚报复以色列</view>
-        <view class="ss">澎湃新闻新闻 171评论</view>  
-      </view>
-      <view class="icon-box"></view>
-    </view>
+    </block>
   </view>
 </view>

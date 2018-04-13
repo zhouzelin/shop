@@ -3,7 +3,8 @@
     "pages/home/home",
     "pages/user/user",
     "pages/community/community",
-    "pages/home/eatWhat"
+    "pages/home/eatWhat",
+    "pages/home/newDetail"
   ],
   "window":{
     "backgroundTextStyle":"dark",
