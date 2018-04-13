@@ -59,7 +59,7 @@
   <view class="news-wrapper">
     <view class="news-title">—— 头条热点 ——</view>
     <block wx:for="{{newData}}" wx:key="index">
-      <view class="news-box" bindtap="gotoNesDtail" data-url="{{item.source_url}}">
+      <view class="news-box" bindtap="gotoNesDtail" data-url="{{item.tag_id}}">
         <view class="content-box">
           <view class="ms limitline2">{{item.title}}</view>
           <view class="ss">{{item.media_name}} {{item.comment_count}}评论</view>  

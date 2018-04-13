@@ -20,7 +20,8 @@ Page({
         this.getData() 
     },
     getData() {
-        let url = `https://m.toutiao.com${this.data.url}info/`
+        let url = `https://m.toutiao.com/i${this.data.url}/info/`
+        console.log(url)
         var data = {
             _signature:"GDojwhAXQu5PDWuZhE08nxg6I9"
         }
@@ -32,7 +33,7 @@ Page({
                 title: detail.title
             })
             this.setData({
-                content: WxParse.wxParse('content', 'html', detail.content, this),
+                content: WxParse.wxParse('content', 'html', detail.content.replace("视频加载中...",""), this),
                 detail: detail
             })
         })
