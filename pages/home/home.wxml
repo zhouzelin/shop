@@ -47,11 +47,15 @@
   <view class="weather-wrapper">
     <view class="weather-title">—— 今日天气 ——</view>
     <view class="weather-box">
-      <view class="icon-box"></view>
+      <view class="icon-box">
+        <image src="{{weather.image}}" class="icon" />
+      </view>
       <view class="content-box">
-        <view class="bs">29/22<text>℃</text></view>
-        <view class="ms">多云</view>
-        <view class="ms">深圳 2018年4月12日 星期四</view>
+        <view class="bs">{{weather.degree}}<text>℃</text>
+          <text>  {{weather.weather}} {{weather.wind_direction}} {{weather.wind_power}}级</text>
+        </view>
+        <view class="ms">{{weather.city}} {{weather.county}}</view>
+        <view class="ms">{{weather.update_time}}</view>
       </view>
     </view>
   </view>
