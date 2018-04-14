@@ -75,7 +75,7 @@ Page({
               if(current_hour < 18) {
                 weather.image = `https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/${weather.day_weather_code}.png`
               }else {
-                weather.image = `https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/night/${weather.day_weather_code}.png`
+                weather.image = `https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/night/${weather.night_weather_code}.png`
               }
               
               self.setData({
