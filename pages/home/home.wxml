@@ -51,10 +51,11 @@
         <image src="{{weather.image}}" class="icon" />
       </view>
       <view class="content-box">
-        <view class="bs">{{weather.degree}}<text>℃</text>
-          <text>  {{weather.weather}} {{weather.wind_direction}} {{weather.wind_power}}级</text>
-        </view>
+        <view class="bs" style="text-align:center;">{{weather.degree}}<text>℃</text></view>
+      </view>
+      <view class="content-box">
         <view class="ms">{{weather.city}} {{weather.county}}</view>
+        <view class="ms">{{weather.weather}} {{weather.wind_direction}} {{weather.wind_power}}级</view>
         <view class="ms">{{weather.update_time}}</view>
       </view>
     </view>

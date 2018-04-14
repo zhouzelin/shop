@@ -72,7 +72,7 @@ Page({
               weather.city = data.city;
               weather.county = data.county;
               weather.image = `https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/${weather.weather_code}.png`
-              weather.update_time = utils.formatTime(new Date());
+              weather.update_time = utils.formatDate(new Date());
               self.setData({
                 weather: weather
               })
