@@ -44,24 +44,37 @@
     </view>
   </view>
   <!--天气模块-->
-  <view class="weather-wrapper">
+  <view class="weather-wrapper" wx:if="{{weather}}">
     <view class="weather-title">—— 今日天气 ——</view>
-    <view class="weather-box">
+    <view class="weather-box" wx:if="{{current_hour < 18}}">
       <view class="icon-box">
         <image src="{{weather.image}}" class="icon" />
       </view>
       <view class="content-box">
-        <view class="bs" style="text-align:center;">{{weather.degree}}<text>℃</text></view>
+        <view class="bs" style="text-align:center;">{{weather.min_degree}}~{{weather.max_degree}}<text>℃</text></view>
       </view>
       <view class="content-box">
         <view class="ms">{{weather.city}} {{weather.county}}</view>
-        <view class="ms">{{weather.weather}} {{weather.wind_direction}} {{weather.wind_power}}级</view>
-        <view class="ms">{{weather.update_time}}</view>
+        <view class="ms">{{weather.day_weather}} {{weather.day_wind_direction}} {{weather.day_wind_power}}级</view>
+        <view class="ms">{{weather.time}}</view>
+      </view>
+    </view>
+    <view class="weather-box" wx:else>
+      <view class="icon-box">
+        <image src="{{weather.image}}" class="icon" />
+      </view>
+      <view class="content-box">
+        <view class="bs" style="text-align:center;">{{weather.min_degree}}~{{weather.max_degree}}<text>℃</text></view>
+      </view>
+      <view class="content-box">
+        <view class="ms">{{weather.city}} {{weather.county}}</view>
+        <view class="ms">{{weather.night_weather}} {{weather.night_wind_direction}} {{weather.night_wind_power}}级</view>
+        <view class="ms">{{weather.time}}</view>
       </view>
     </view>
   </view>
   <!--今日热点-->
-  <view class="news-wrapper">
+  <view class="news-wrapper" wx:if="{{newData}}">
     <view class="news-title">—— 头条热点 ——</view>
     <block wx:for="{{newData}}" wx:key="index">
       <view class="news-box" bindtap="gotoNesDtail" data-url="{{item.tag_id}}">

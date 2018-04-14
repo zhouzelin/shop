@@ -9,7 +9,7 @@ const formatTime = date => {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
-const formatDate = secs => {
+const formatDate = (secs,formate="YYYY-MM-DD hh:mm:ss") => {
   var t = new Date(secs);
   var year = t.getFullYear();
   var month = t.getMonth() + 1;
@@ -22,12 +22,23 @@ const formatDate = secs => {
   if (minute < 10) { minute = '0' + minute; }
   var second = t.getSeconds();
   if (second < 10) { second = '0' + second; }
-  return year + '-' + month + '-' + date + ' ' + hour + ':' + minute + ':' + second;
-}
 
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
+  let json = {
+    'YYYY': year,
+    'MM': month,
+    'DD': date,
+    'hh': hour,
+    'mm': minute,
+    'ss': second
+  }
+
+  let result = formate;
+  for(var key in json) {
+    console.log(key,json[key]);
+    result = result.replace(key,json[key]);
+  }
+
+  return result;
 }
 
 const gotoPage = (url, param) => {

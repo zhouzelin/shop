@@ -59,7 +59,7 @@ Page({
             let url = "https://wis.qq.com/weather/common";
             let data = {
               source: 'xw',
-              weather_type: "forecast_1h",
+              weather_type: "forecast_24h",
               province: detail.province,
               city: detail.city,
               county: detail.district
@@ -67,14 +67,20 @@ Page({
 
             utils.get(url,data)
             .then(res =>{
-              console.log(res.data.data.forecast_1h[1])
-              let weather = res.data.data.forecast_1h[1];
+              console.log(res.data.data.forecast_24h[1])
+              let weather = res.data.data.forecast_24h[1];
               weather.city = data.city;
               weather.county = data.county;
-              weather.image = `https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/${weather.weather_code}.png`
-              weather.update_time = utils.formatDate(new Date());
+              let current_hour = new Date().getHours();
+              if(current_hour < 18) {
+                weather.image = `https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/${weather.day_weather_code}.png`
+              }else {
+                weather.image = `https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/night/${weather.day_weather_code}.png`
+              }
+              
               self.setData({
-                weather: weather
+                weather: weather,
+                current_hour: current_hour
               })
             })
           }

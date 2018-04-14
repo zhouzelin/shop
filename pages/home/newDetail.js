@@ -29,7 +29,7 @@ Page({
         utils.get(url,data).
         then(res => {
             let detail = res.data.data;
-            detail.publish_time = utils.formatDate(detail.publish_time*1000);
+            detail.publish_time = utils.formatDate(detail.publish_time*1000,"YYYY年MM月DD日 hh:mm");
             wx.setNavigationBarTitle({
                 title: detail.title
             })
