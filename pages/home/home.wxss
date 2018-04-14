@@ -51,6 +51,7 @@
   width: 40pt;
   height: 40pt;
   margin: 0 14pt;
+  overflow: hidden;
   object-fit: contain;
 }
 .weather-box .icon-box image{ 
