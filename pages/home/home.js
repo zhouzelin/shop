@@ -25,7 +25,7 @@ Page({
   onReady() {
     let self = this;
     this.getNews();
-    this.getLocation()
+    this.getWeather()
   },
   gotoEatWhat() {
     let url = 'eatWhat';
@@ -39,62 +39,62 @@ Page({
       wx.stopPullDownRefresh();
     })
   },
-  getLocation() {
+  getWeather() {
     let self = this;
     let getLocation = utils.wxPromisify(wx.getLocation);
+    let data;
     getLocation({ type: 'wgs84' })
       .then(res => {
-
-        let qqmapsdk = new QQMapWX({
-          key: 'QLIBZ-4SRKX-VZ54Z-ZYLR4-GJOSO-K7BYQ'
-        });
-
         let options = {
           location: {
             latitude: res.latitude,
             longitude: res.longitude
-          },
-          success: function (res) {
-            let detail = res.result.address_component;
-            let url = "https://wis.qq.com/weather/common";
-            let data = {
-              source: 'xw',
-              weather_type: "forecast_24h",
-              province: detail.province,
-              city: detail.city,
-              county: detail.district
-            }
-
-            utils.get(url,data)
-            .then(res =>{
-              console.log(res.data.data.forecast_24h[1])
-              let weather = res.data.data.forecast_24h[1];
-              weather.city = data.city;
-              weather.county = data.county;
-              let current_hour = new Date().getHours();
-              if(current_hour < 18) {
-                weather.image = `https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/${weather.day_weather_code}.png`
-              }else {
-                weather.image = `https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/night/${weather.night_weather_code}.png`
-              }
-              
-              self.setData({
-                weather: weather,
-                current_hour: current_hour
-              })
-            })
           }
         }
-        // 地址逆解析
-        qqmapsdk.reverseGeocoder(options);
-
+        return new Promise((resolve, reject) => resolve(options))
       })
-      .catch((x)=>{
+      .then(res => {
+        return new Promise((resolve, reject) => {
+          res.success = x => resolve(x) // 成功
+          res.fail = x => reject(x) // 失败
+          let qqmapsdk = new QQMapWX({
+            key: 'QLIBZ-4SRKX-VZ54Z-ZYLR4-GJOSO-K7BYQ'
+          });
+          qqmapsdk.reverseGeocoder(res)
+        })
+      })
+      .then(res => {
+        let detail = res.result.address_component;
+        let url = "https://wis.qq.com/weather/common";
+        data = {
+          source: 'xw',
+          weather_type: "forecast_24h",
+          province: detail.province,
+          city: detail.city,
+          county: detail.district
+        }
+        return utils.get(url, data)
+      })
+      .then(res => {
+        console.log(res.data.data.forecast_24h[1])
+        let weather = res.data.data.forecast_24h[1];
+        weather.city = data.city;
+        weather.county = data.county;
+        let current_hour = new Date().getHours();
+        if (current_hour < 18) {
+          weather.image = `https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/${weather.day_weather_code}.png`
+        } else {
+          weather.image = `https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/night/${weather.night_weather_code}.png`
+        }
+
+        self.setData({
+          weather: weather,
+          current_hour: current_hour
+        })
+      })
+      .catch((x) => {
         console.log(x);
       })
-  },
-  getweather(res) {
-    console.log(res);
   },
   getNews(callback) {
     let url = 'https://m.toutiao.com/list/';
@@ -129,5 +129,8 @@ Page({
   gotoNesDtail(event) {
     let dataset = event.currentTarget.dataset;
     utils.gotoPage('newDetail', { url: dataset.url });
+  },
+  gotoWeather() {
+    utils.gotoPage('weather');
   }
 })

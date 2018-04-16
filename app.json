@@ -4,7 +4,8 @@
     "pages/user/user",
     "pages/community/community",
     "pages/home/eatWhat",
-    "pages/home/newDetail"
+    "pages/home/newDetail",
+    "pages/home/weather"
   ],
   "window":{
     "backgroundTextStyle":"dark",

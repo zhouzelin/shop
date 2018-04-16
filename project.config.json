@@ -30,13 +30,14 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
-					"name": "吃啥",
-					"pathName": "pages/home/eatWhat",
-					"query": ""
+					"name": "天气",
+					"pathName": "pages/home/weather",
+					"query": "",
+					"scene": "1001"
 				}
 			]
 		}

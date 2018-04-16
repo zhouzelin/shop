@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "头条详情",
+    "navigationBarTitleText": "天气预报",
     "usingComponents": {
         "loader": "../components/loader/loader"
     }
