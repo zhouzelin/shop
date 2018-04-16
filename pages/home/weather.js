@@ -122,6 +122,11 @@ Page({
                     } else {
                         allDay[key].hour = '明天';
                     }
+                    if(parseInt(allDay[key].update_time.slice(8, 10)) < 18 && parseInt(allDay[key].update_time.slice(8, 10)) >= 6) {
+                        allDay[key].image = "https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/"+allDay[key].weather_code+".png";
+                    } else {
+                        allDay[key].image = "https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/night/"+allDay[key].weather_code+".png";
+                    }
                 }
                 let week_arr = [
                     "昨天", "今天", "明天", "后天",
