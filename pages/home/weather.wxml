@@ -3,18 +3,22 @@
     <view class="current">
         <view class="degree">{{current.degree}}°</view>
         <view class="weather">{{current.weather_short}}</view>
-        <view class="marquee">
-            <view class="wind" wx:if="{{current.wind_direction == 2}}">东风 {{current.wind_power}}级</view>
-            <view class="wind" wx:elif="{{current.wind_direction == 3}}">东南风 {{current.wind_power}}级</view>
-            <view class="wind" wx:elif="{{current.wind_direction == 4}}">南风 {{current.wind_power}}级</view>
-            <view class="wind" wx:elif="{{current.wind_direction == 5}}">西南风 {{current.wind_power}}级</view>
-            <view class="wind" wx:elif="{{current.wind_direction == 6}}">西风 {{current.wind_power}}级</view>
-            <view class="wind" wx:elif="{{current.wind_direction == 7}}">西北风 {{current.wind_power}}级</view>
-            <view class="wind" wx:elif="{{current.wind_direction == 8}}">北风 {{current.wind_power}}级</view>
-            <view class="wind" wx:elif="{{current.wind_direction == 9}}">东北风 {{current.wind_power}}级</view>
-            <view class="wind" wx:else>微风 {{current.wind_power}}级</view>
-            <view class="wet">湿度 {{current.humidity}}%</view>
-        </view>
+        <swiper class="marquee" vertical="true" autoplay="true" circular="true" interval="2000">
+            <swiper-item>
+                <view class="wind" wx:if="{{current.wind_direction == 2}}">东风 {{current.wind_power}}级</view>
+                <view class="wind" wx:elif="{{current.wind_direction == 3}}">东南风 {{current.wind_power}}级</view>
+                <view class="wind" wx:elif="{{current.wind_direction == 4}}">南风 {{current.wind_power}}级</view>
+                <view class="wind" wx:elif="{{current.wind_direction == 5}}">西南风 {{current.wind_power}}级</view>
+                <view class="wind" wx:elif="{{current.wind_direction == 6}}">西风 {{current.wind_power}}级</view>
+                <view class="wind" wx:elif="{{current.wind_direction == 7}}">西北风 {{current.wind_power}}级</view>
+                <view class="wind" wx:elif="{{current.wind_direction == 8}}">北风 {{current.wind_power}}级</view>
+                <view class="wind" wx:elif="{{current.wind_direction == 9}}">东北风 {{current.wind_power}}级</view>
+                <view class="wind" wx:else>微风 {{current.wind_power}}级</view>
+            </swiper-item>
+            <swiper-item>
+                <view class="wet">湿度 {{current.humidity}}%</view>
+            </swiper-item>
+        </swiper>
         <view class="air">
             <view class="score">{{air.aqi}}</view>
             <view class="word">{{air.aqi_name}}</view>
