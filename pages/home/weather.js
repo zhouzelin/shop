@@ -1,6 +1,9 @@
 /*weather.js*/
-var utils = require('../../utils/util');
+const utils = require('../../utils/util');
 const QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+let qqmapsdk = new QQMapWX({
+    key: 'QLIBZ-4SRKX-VZ54Z-ZYLR4-GJOSO-K7BYQ'
+});
 
 Page({
     data: {
@@ -16,13 +19,18 @@ Page({
     onLoad() {
 
     },
+    onPullDownRefresh() {
+        let self = this;
+        this.setData({ loading: true });
+        this.getWeather();
+    },
     onReady() {
         this.getWeather();
+        this.getCityList();
     },
     getWeather() {
         let self = this;
         let getLocation = utils.wxPromisify(wx.getLocation);
-        let data;
         getLocation({ type: 'wgs84' })
             .then(res => {
                 let options = {
@@ -37,27 +45,68 @@ Page({
                 return new Promise((resolve, reject) => {
                     res.success = x => resolve(x) // 成功
                     res.fail = x => reject(x) // 失败
-                    let qqmapsdk = new QQMapWX({
-                        key: 'QLIBZ-4SRKX-VZ54Z-ZYLR4-GJOSO-K7BYQ'
-                    });
                     qqmapsdk.reverseGeocoder(res)
                 })
             })
             .then(res => {
-                let detail = res.result.address_component;
-                this.setData({
-                    location: detail
-                })
-                let url = "https://wis.qq.com/weather/common";
-                data = {
-                    source: 'xw',
-                    weather_type: "observe|forecast_1h|forecast_24h|air",
-                    province: detail.province,
-                    city: detail.city,
-                    county: detail.district
-                }
-                return utils.get(url, data);
+                let location = res.result.address_component;
+                console.log(666)
+                self.getWeatherCallback(location);
             })
+            .catch((x) => {
+                console.log(x);
+            })
+    },
+    getDayaftertoday(n) {
+        let word_arr = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+        //后天之后星期几
+        let day1 = new Date();
+        day1 = day1.setTime(day1.getTime() + 24 * 60 * 60 * 1000 * n)
+        day1 = new Date(day1);
+        let week1 = day1.getDay();
+        return word_arr[week1];
+    },
+    getCityList() {
+        let self = this;
+        qqmapsdk.getCityList({
+            success: function (res) {
+                console.log(res)
+                self.setData({
+                    region: res.result
+                })
+            },
+            fail: function (res) {
+                console.log(res)
+            }
+        })
+    },
+    bindRegionChange(event) {
+        let value = event.detail.value;
+        let province = value[0];
+        let city = value[1];
+        let district = value[2];
+        let location = { province, city, district };
+        this.setData({ loading: true });
+        this.getWeatherCallback(location)
+    },
+    getWeatherCallback(location) {
+        this.setData({
+            location: location
+        })
+        let url = "https://wis.qq.com/weather/common";
+        let data = {
+            source: 'xw',
+            weather_type: "observe|forecast_1h|forecast_24h|air",
+            province: location.province,
+            city: location.city,
+            county: location.district
+        }
+        // 处理特殊情况
+        if(data.province == "广东省" && data.city == "汕尾市" && data.county == "城区") {
+            data.county = '';
+        }
+
+        utils.get(url, data)
             .then(res => {
                 let current = res.data.data.observe;
                 let twoDays = [res.data.data.forecast_24h[1], res.data.data.forecast_24h[2]]
@@ -85,7 +134,6 @@ Page({
                     week[key].date = week[key].time.slice(5, 10);
                     week[key].week = week_arr[key];
                 }
-                console.log(week);
                 this.setData({
                     current: current,
                     twoDays: twoDays,
@@ -95,18 +143,7 @@ Page({
                     week: week,
                     loading: false
                 });
+                wx.stopPullDownRefresh();
             })
-            .catch((x) => {
-                console.log(x);
-            })
-    },
-    getDayaftertoday(n) {
-        let word_arr = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
-        //后天之后星期几
-        let day1 = new Date();
-        day1 = day1.setTime(day1.getTime() + 24 * 60 * 60 * 1000 * n)
-        day1 = new Date(day1);
-        let week1 = day1.getDay();
-        return word_arr[week1];
     }
 })

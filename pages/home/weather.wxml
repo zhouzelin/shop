@@ -1,5 +1,7 @@
 <view class="main">
-    <view class="location">{{location.city}} {{location.district}}</view>
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <view class="location">{{location.city}} {{location.district}}</view>     
+    </picker>
     <view class="current" wx:if="{{current}}">
         <view class="degree">{{current.degree}}°</view>
         <view class="weather">{{current.weather_short}}</view>
@@ -63,6 +65,5 @@
             <view class="ss">{{item.day_wind_power}}级</view>
         </swiper-item>
     </swiper>
-    <view class="copy">————数据来源于中国天气网————</view>
     <loader wx:if="{{loading}}"/>
 </view>
