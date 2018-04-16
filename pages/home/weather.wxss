@@ -1,0 +1,100 @@
+/*weather.css*/
+page {
+    background: #eee;
+}
+.location {
+    background: #fff;
+    text-align: center;
+    font-size: 12pt;
+    height: 34pt;
+    line-height: 34pt;
+    border-bottom: 1pt solid #ddd;
+}
+.current {
+    background: #fff;
+    padding: 20pt 0;
+    text-align: center;
+    position: relative;
+    border-bottom: 1pt solid #ddd;
+}
+.current .degree {
+    font-size: 62pt;
+}
+.current .weather {
+    font-size: 16pt;
+    color: #666;
+    margin-bottom: 5pt;
+}
+.current .marquee {
+    height: 14pt;
+    overflow: hidden;
+}
+.current .marquee>view {
+    font-size: 10pt;
+    color: #999;
+    height: 14pt;
+    line-height: 14pt;
+}
+.current .air {
+    position: absolute;
+    top: 10pt;
+    left: 10pt;
+    background: #f0cc35;
+    color: #fff;
+    border-radius: 4pt;
+    padding: 4pt;
+}
+.current .air>view {
+    font-size: 10pt;
+}
+.twoDay {
+    background: #fff;
+    padding: 10pt 0;
+    box-sizing: border-box;
+    display: flex;
+}
+.twoDay .item-box {
+    flex: 1;
+    padding: 0 10pt;
+}
+.twoDay .item-box:first-child {
+    border-right: 1pt solid #ddd;
+}
+.twoDay .item-box .item {
+    display: flex;
+}
+.twoDay .item-box .item>view:first-child {
+    flex: 1;
+}
+.twoDay .item-box .item>view {
+    font-size: 12pt;
+    height: 20pt;
+    display: flex;
+    align-items: center;
+}
+.twoDay .item-box .item>view>image {
+    width: 22pt;
+    height: 22pt;
+}
+.allDay {
+    background: #fff;
+    margin-top: 10pt;
+    padding: 20pt 0;
+    height: 70pt;
+}
+.allDay swiper-item {
+    text-align: center;
+}
+.allDay swiper-item .time {
+    font-size: 10pt;
+    color: #999;
+    height: 14pt;
+    line-height: 14pt;
+}
+.allDay swiper-item .img-box {
+    padding: 10pt 0;
+}
+.allDay swiper-item .img-box image{
+    width: 22pt;
+    height: 22pt;
+}

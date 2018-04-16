@@ -1,3 +1,47 @@
 <view class="main">
-    
+    <view class="location"><icon></icon>{{location.city}} {{location.district
+    }}</view>
+    <view class="current">
+        <view class="degree">{{current.degree}}°</view>
+        <view class="weather">{{current.weather_short}}</view>
+        <view class="marquee">
+            <view class="wind" wx:if="{{current.wind_direction == 2}}">东风 {{current.wind_power}}级</view>
+            <view class="wind" wx:elif="{{current.wind_direction == 3}}">东南风 {{current.wind_power}}级</view>
+            <view class="wind" wx:elif="{{current.wind_direction == 4}}">南风 {{current.wind_power}}级</view>
+            <view class="wind" wx:elif="{{current.wind_direction == 5}}">西南风 {{current.wind_power}}级</view>
+            <view class="wind" wx:elif="{{current.wind_direction == 6}}">西风 {{current.wind_power}}级</view>
+            <view class="wind" wx:elif="{{current.wind_direction == 7}}">西北风 {{current.wind_power}}级</view>
+            <view class="wind" wx:elif="{{current.wind_direction == 8}}">北风 {{current.wind_power}}级</view>
+            <view class="wind" wx:elif="{{current.wind_direction == 9}}">东北风 {{current.wind_power}}级</view>
+            <view class="wind" wx:else>微风 {{current.wind_power}}级</view>
+            <view class="wet">湿度 {{current.humidity}}%</view>
+        </view>
+        <view class="air">
+            <view class="score">{{air.aqi}}</view>
+            <view class="word">{{air.aqi_name}}</view>
+        </view>
+    </view>
+    <view class="twoDay" wx:if="{{twoDays.length>0}}">
+        <view class="item-box" wx:for="{{twoDays}}" wx:key="index">
+            <view class="item">
+                <view wx:if="{{index==0}}">今天</view>
+                <view wx:elif="{{index==1}}">明天</view>
+                <view>{{item.max_degree}}/{{item.min_degree}}°</view>
+            </view>
+            <view class="item">
+                <view>{{item.day_weather_short}}<block wx:if="{{item.day_weather != item.night_weather}}">转{{item.night_weather_short}}</block></view>
+                <view wx:if="{{current_hour<18}}"><image src="{{'https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/'+item.day_weather_code+'.png'}}"/></view>
+                <view wx:else><image src="{{'https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/night/'+item.night_weather_code+'.png'}}"/></view>
+            </view>
+        </view>
+    </view>
+    <swiper class="allDay" display-multiple-items="6.5" height="auto" wx:if="{{allDay}}">
+        <swiper-item wx:for="{{allDay}}" wx:key="index" wx:if="{{index<24}}">
+           <view class="time">{{item.hour}}</view>
+           <view class="img-box">
+                <image src="{{'https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/'+item.weather_code+'.png'}}" />
+           </view>
+           <view class="degree">{{item.degree}}°</view>
+        </swiper-item>
+    </swiper>
 </view>

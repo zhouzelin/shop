@@ -2,6 +2,7 @@
 @import "/wxParse/wxParse.wxss";
 view,text {
     font-size: 12pt;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif
 }
 .limitline1 {
     display: -webkit-box;
