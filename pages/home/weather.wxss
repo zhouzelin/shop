@@ -80,7 +80,7 @@ page {
     background: #fff;
     margin-top: 10pt;
     padding: 20pt 0;
-    height: 70pt;
+    height: 72pt;
 }
 .allDay swiper-item {
     text-align: center;
