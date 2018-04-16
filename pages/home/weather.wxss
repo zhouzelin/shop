@@ -98,3 +98,40 @@ page {
     width: 22pt;
     height: 22pt;
 }
+.week {
+    margin-top: 10pt;
+    background: #fff;
+    height: 274pt;
+    padding: 20pt 0;
+}
+.week swiper-item {
+    text-align: center;
+}
+.week swiper-item .ss {
+    font-size: 10pt;
+    color: #999;
+}
+.week swiper-item .ms {
+    font-size: 12pt;
+    color: #333;
+    height: 40pt;
+    line-height: 40pt;
+}
+.week swiper-item .bs {
+    font-size: 14pt;
+    height: 40pt;
+    line-height: 40pt;
+}
+.week swiper-item .img-box {
+    padding: 0;
+}
+.week swiper-item .img-box image {
+    width: 22pt;
+    height: 22pt;
+}
+.copy {
+    text-align:  center;
+    color: #999;
+    height: 40pt;
+    line-height: 40pt;
+}

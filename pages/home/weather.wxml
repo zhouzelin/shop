@@ -1,6 +1,5 @@
 <view class="main">
-    <view class="location"><icon></icon>{{location.city}} {{location.district
-    }}</view>
+    <view class="location">{{location.city}} {{location.district}}</view>
     <view class="current">
         <view class="degree">{{current.degree}}°</view>
         <view class="weather">{{current.weather_short}}</view>
@@ -35,13 +34,29 @@
             </view>
         </view>
     </view>
-    <swiper class="allDay" display-multiple-items="6.5" height="auto" wx:if="{{allDay}}">
+    <swiper class="allDay" display-multiple-items="6.5" wx:if="{{allDay}}">
         <swiper-item wx:for="{{allDay}}" wx:key="index" wx:if="{{index<24}}">
-           <view class="time">{{item.hour}}</view>
-           <view class="img-box">
+            <view class="time">{{item.hour}}</view>
+            <view class="img-box">
                 <image src="{{'https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/'+item.weather_code+'.png'}}" />
-           </view>
-           <view class="degree">{{item.degree}}°</view>
+            </view>
+            <view class="degree">{{item.degree}}°</view>
         </swiper-item>
     </swiper>
+    <swiper class="week" display-multiple-items="6" wx:if="{{week}}">
+        <swiper-item wx:for="{{week}}" wx:key="index">
+            <view class="ss">{{item.week}}</view>
+            <view class="ss">{{item.date}}</view>
+            <view class="ms">{{item.day_weather_short}}</view>
+            <view class="img-box"><image src="{{'https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/'+item.day_weather_code+'.png'}}" /></view>
+            <view class="bs">{{item.max_degree}}°</view>
+            <view>~</view>
+            <view class="bs">{{item.min_degree}}°</view>
+            <view class="img-box"><image src="{{'https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/night/'+item.night_weather_code+'.png'}}" /></view>
+            <view class="ms">{{item.night_weather_short}}</view>
+            <view class="ss">{{item.day_wind_direction}}</view>
+            <view class="ss">{{item.day_wind_power}}级</view>
+        </swiper-item>
+    </swiper>
+    <view class="copy">————数据来源于中国天气网————</view>
 </view>

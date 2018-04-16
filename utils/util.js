@@ -34,7 +34,6 @@ const formatDate = (secs,formate="YYYY-MM-DD hh:mm:ss") => {
 
   let result = formate;
   for(var key in json) {
-    console.log(key,json[key]);
     result = result.replace(key,json[key]);
   }
 
