@@ -23,6 +23,7 @@
             <view class="score">{{air.aqi}}</view>
             <view class="word">{{air.aqi_name}}</view>
         </view>
+        <view class="modal"></view>
     </view>
     <view class="twoDay" wx:if="{{twoDays.length>0}}">
         <view class="item-box" wx:for="{{twoDays}}" wx:key="index">

@@ -101,7 +101,7 @@ page {
 .week {
     margin-top: 10pt;
     background: #fff;
-    height: 274pt;
+    height: 280pt;
     padding: 20pt 0;
 }
 .week swiper-item {
@@ -134,4 +134,12 @@ page {
     color: #999;
     height: 40pt;
     line-height: 40pt;
+}
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
 }
