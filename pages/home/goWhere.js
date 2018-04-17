@@ -165,8 +165,7 @@ Page({
     loadMore() {
         let self = this;
         this.setData({
-            pageIndex: self.data.pageIndex + 1,
-            loading: true
+            pageIndex: self.data.pageIndex + 1
         })
         this.searchByKey();
     }
