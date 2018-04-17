@@ -39,7 +39,7 @@ Page({
     let self = this;
     let getLocation = utils.wxPromisify(wx.getLocation);
     let data;
-    getLocation({ type: 'wgs84' })
+    getLocation({ type: 'gcj02' })
       .then(res => {
         let options = {
           location: {

@@ -1,3 +1,8 @@
 {
-    "navigationBarTitleText": "查看附近"
+    "navigationBarTitleText": "查看附近",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "usingComponents": {
+        "loader": "../components/loader/loader"
+    }
 }

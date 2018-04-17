@@ -1,4 +1,36 @@
 <!--goWhere.wxml-->
 <view class="main">
-
+    <view class="nav-box">
+        <view class="nav">
+            <view class="{{index == selectedIndex ? 'nav-item active' : 'nav-item'}}" wx:for="{{nav}}" 
+                wx:key="index" bindtap="selectIndex" data-index="{{index}}">
+                {{item.name}}
+            </view>
+        </view>
+        <view class="category-list" scroll-x="false" scroll-y="true">
+            <view class="{{index == selectIedCIndex ? 'category-item active' : 'category-item'}}" wx:for="{{category}}" 
+                wx:key="index" bindtap="selectCIndex" data-index="{{index}}">
+                {{item.name}}
+            </view>
+        </view>
+    </view>
+    <view style="height:102pt;"></view>
+    <scroll-view class="location" scroll-x="false" scroll-y="true" bindscrolltolower="loadMore">
+        <view class="location-item" bindtap="chooseLocation">
+            <view class="title">
+                <view>{{location.province}}{{location.city}}{{location.district}}</view>
+                <view>定位</view>
+            </view>
+            <view class="desc">{{location.street_number}}</view>
+        </view>
+        <view class="location-item" wx:for="{{nearByList}}" wx:key="index" bindtap="openLocation" data-info="{{item}}">
+            <view class="title">
+                <view>{{item.title}}</view>
+                <view>{{item._distance}}m</view>
+            </view>
+            <view class="desc">{{item.address}}</view>
+        </view>
+        <view class="tips" wx:if="tips">{{tips}}</view>
+    </scroll-view>
+    <loader wx-if="{{loading}}"/>
 </view>

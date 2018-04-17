@@ -2,3 +2,78 @@
 page {
     background: #eee;
 }
+.nav {
+    background: #fff;
+    display: flex;
+}
+.nav-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.nav .nav-item {
+    flex:1;
+    font-size: 12pt;
+    height: 30pt;
+    line-height: 30pt;
+    text-align: center;
+    margin: 0 10pt;
+}
+.nav .nav-item.active {
+    border-bottom: 1px solid #168FED;
+    font-weight: 700; 
+    color: #168FED;
+}
+.category-list {
+    padding: 5pt;
+    height: 60pt;
+    background: #eee;
+} 
+.category-list .category-item {
+    font-size: 10pt;
+    border: 1pt solid #168FED;
+    color:  #168FED;
+    background: #fff;
+    border-radius: 6pt;
+    height: 22pt;
+    line-height: 22pt;
+    width: 48pt;
+    text-align: center;
+    display: inline-block;
+    margin: 2pt;
+}
+.category-list .category-item.active {
+    border: 1pt solid #fff;
+    color:  #fff;
+    background: #168FED;
+}
+.location {
+    position: absolute;
+    top: 100pt;
+    bottom: 0;
+    width: 100%;
+}
+.location .location-item {
+    background: #fff;
+    padding: 5pt 10pt;
+    border-bottom: 1pt solid #ddd;
+}
+.location .location-item .title {
+    display: flex;
+}
+.location .location-item>view {
+    color: #999;
+    font-size: 10pt;
+}
+.location .location-item .title>view:first-child {
+    flex: 1;
+    color: #333;
+}
+scroll-view .tips {
+    text-align:center;
+    font-size:10pt;
+    color:#666;
+    height:20pt;
+    line-height:20pt;
+}
