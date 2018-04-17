@@ -1,0 +1,8 @@
+/*scroller.wxss*/
+.tips {
+	height: 20pt;
+	line-height: 20pt;
+	font-size: 10pt;
+	color: #666;
+	text-align: center;
+}

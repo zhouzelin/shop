@@ -26,9 +26,9 @@ page {
     color: #168FED;
 }
 .category-list {
-    padding: 5pt;
-    height: 60pt;
+    height: 24pt;
     background: #eee;
+    padding: 5pt;
 } 
 .category-list .category-item {
     font-size: 10pt;
@@ -41,7 +41,6 @@ page {
     width: 48pt;
     text-align: center;
     display: inline-block;
-    margin: 2pt;
 }
 .category-list .category-item.active {
     border: 1pt solid #fff;
@@ -50,7 +49,7 @@ page {
 }
 .location {
     position: absolute;
-    top: 100pt;
+    top: 66pt;
     bottom: 0;
     width: 100%;
 }

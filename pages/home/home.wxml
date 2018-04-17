@@ -88,5 +88,5 @@
       </view>
     </block>
   </view>
-  <loader wx:if="{{loading}}"/>
+  <loader loading="{{loading}}"/>
 </view>
