@@ -6,13 +6,11 @@
                 {{item.name}}
             </view>
         </view>
-        <swiper class="category-list" display-multiple-items="4.5">
-            <swiper-item wx:for="{{category}}" wx:key="index">
-                <view class="{{index == selectIedCIndex ? 'category-item active' : 'category-item'}}" bindtap="selectCIndex" data-index="{{index}}">
+        <scroll-view class="category-list" scroll-x scroll-left="100" scroll-into-view="{{toView}}">
+            <view wx:for="{{category}}" wx:key="index" class="{{index == selectIedCIndex ? 'category-item active' : 'category-item'}}" bindtap="selectCIndex" data-index="{{index}}" id="{{'view'+item.id}}">
                     {{item.name}}
-                </view>
-            </swiper-item>
-        </swiper>
+            </view>
+        </scroll-view>
     </view>
     <scroller bind:scrolltolowerEvent="loadMore" my-class="location" tips="{{tips}}">
         <view>

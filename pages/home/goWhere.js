@@ -39,7 +39,8 @@ Page({
             category: nav[selectedIndex].children,
             selectIedCIndex: selectIedCIndex,
             keyword: nav[selectedIndex].children[selectIedCIndex].name,
-            pageIndex: 1
+            pageIndex: 1,
+            toView: 'view'+nav[selectedIndex].children[selectIedCIndex].id
         })
         this.searchByKey()
     },

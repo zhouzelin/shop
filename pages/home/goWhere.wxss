@@ -11,6 +11,7 @@ page {
     top: 0;
     left: 0;
     width: 100%;
+    overflow: hidden;
 }
 .nav .nav-item {
     flex:1;
@@ -29,6 +30,7 @@ page {
     height: 24pt;
     background: #eee;
     padding: 5pt;
+    white-space: nowrap;
 } 
 .category-list .category-item {
     font-size: 10pt;
@@ -41,6 +43,7 @@ page {
     width: 48pt;
     text-align: center;
     display: inline-block;
+    margin-right: 5pt;
 }
 .category-list .category-item.active {
     border: 1pt solid #fff;
