@@ -27,10 +27,6 @@ Page({
     this.getNews();
     this.getWeather()
   },
-  gotoEatWhat() {
-    let url = 'eatWhat';
-    utils.gotoPage(url);
-  },
   onPullDownRefresh: function () {
     this.setData({
       loading: true
@@ -130,7 +126,8 @@ Page({
     let dataset = event.currentTarget.dataset;
     utils.gotoPage('newDetail', { url: dataset.url });
   },
-  gotoWeather() {
-    utils.gotoPage('weather');
+  gotoPage(event) {
+    let page = event.currentTarget.dataset.page;
+    utils.gotoPage(page);
   }
 })

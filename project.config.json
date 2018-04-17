@@ -30,12 +30,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "天气",
-					"pathName": "pages/home/weather",
+					"pathName": "pages/home/goWhere",
 					"query": "",
 					"scene": "1001"
 				}

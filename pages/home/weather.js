@@ -39,18 +39,14 @@ Page({
                         longitude: res.longitude
                     }
                 }
-                return new Promise((resolve, reject) => resolve(options))
-            })
-            .then(res => {
                 return new Promise((resolve, reject) => {
-                    res.success = x => resolve(x) // 成功
-                    res.fail = x => reject(x) // 失败
-                    qqmapsdk.reverseGeocoder(res)
+                    options.success = x => resolve(x) // 成功
+                    options.fail = x => reject(x) // 失败
+                    qqmapsdk.reverseGeocoder(options)
                 })
             })
             .then(res => {
                 let location = res.result.address_component;
-                console.log(666)
                 self.getWeatherCallback(location);
             })
             .catch((x) => {
@@ -101,12 +97,18 @@ Page({
             city: location.city,
             county: location.district
         }
-        // 处理特殊情况
-        if(data.province == "广东省" && data.city == "汕尾市" && data.county == "城区") {
-            data.county = '';
-        }
 
         utils.get(url, data)
+            .then(res => {
+                if(JSON.stringify(res.data.data.observe) == '{}') {
+                    data.county = '';
+                    return utils.get(url, data)
+                } else {
+                    return new Promise((resolve,reject)=>{
+                        resolve(res);
+                    })
+                }
+            })
             .then(res => {
                 let current = res.data.data.observe;
                 let twoDays = [res.data.data.forecast_24h[1], res.data.data.forecast_24h[2]]
@@ -140,15 +142,18 @@ Page({
                     week[key].week = week_arr[key];
                 }
                 this.setData({
-                    current: current,
+                    current: JSON.stringify(current)=='{}'? null : current,
                     twoDays: twoDays,
                     current_hour,
-                    allDay: allDay,
-                    air: air,
-                    week: week,
+                    allDay: JSON.stringify(allDay)=='{}'? null : allDay,
+                    air: JSON.stringify(air)=='{}'? null : air,
+                    week: JSON.stringify(week)=='{}'? null : week,
                     loading: false
                 });
                 wx.stopPullDownRefresh();
+            })
+            .catch(e => {
+                console.log(e);
             })
     }
 })

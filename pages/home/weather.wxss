@@ -2,6 +2,13 @@
 page {
     background: #eee;
 }
+picker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
 .location {
     background: #fff;
     text-align: center;
@@ -9,6 +16,13 @@ page {
     height: 34pt;
     line-height: 34pt;
     border-bottom: 1pt solid #ddd;
+    position: relative;
+}
+.location .more-icon {
+    position: absolute;
+    right: 10pt;
+    top: 50%;
+    transform: translateY(-50%) 
 }
 .current {
     background: #fff;

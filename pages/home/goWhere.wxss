@@ -1,0 +1,4 @@
+/**goWhere.wxss**/
+page {
+    background: #eee;
+}

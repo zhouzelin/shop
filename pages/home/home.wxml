@@ -10,7 +10,7 @@
   </swiper>
   <!--功能模块-->
   <view class="module-wrapper">
-    <view class="module-item" bindtap="gotoWeather">
+    <view class="module-item" bindtap="gotoPage"  data-page="weather">
       <view class="icon-box"></view>
       <view class="item-text">天气</view>
     </view>
@@ -26,11 +26,11 @@
       <view class="icon-box"></view>
       <view class="item-text">听歌</view>
     </view>
-    <view class="module-item" bindtap="gotoEatWhat">
+    <view class="module-item" bindtap="gotoPage" data-page="eatWhat">
       <view class="icon-box"></view>
       <view class="item-text">吃啥</view>
     </view>
-    <view class="module-item">
+    <view class="module-item" bindtap="gotoPage" data-page="goWhere">
       <view class="icon-box"></view>
       <view class="item-text">去哪</view>
     </view>
@@ -44,14 +44,14 @@
     </view>
   </view>
   <!--天气模块-->
-  <view class="weather-wrapper" wx:if="{{weather}}" bindtap="gotoWeather">
+  <view class="weather-wrapper" wx:if="{{weather}}" bindtap="gotoPage" data-page="weather">
     <view class="weather-title">—— 今日天气 ——</view>
     <view class="weather-box" wx:if="{{current_hour < 18}}">
       <view class="icon-box">
         <image src="{{weather.image}}" class="icon" />
       </view>
       <view class="content-box">
-        <view class="bs" style="text-align:center;">{{weather.min_degree}}~{{weather.max_degree}}<text>℃</text></view>
+        <view class="bs" style="text-align:center;">{{weather.max_degree}}/{{weather.min_degree}}°</view>
       </view>
       <view class="content-box">
         <view class="ms">{{weather.city}} {{weather.county}}</view>

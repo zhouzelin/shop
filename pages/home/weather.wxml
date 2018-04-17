@@ -1,7 +1,8 @@
 <view class="main">
     <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-        <view class="location">{{location.city}} {{location.district}}</view>     
+        <view class="location">{{location.city}} {{location.district}}<view class="more-icon">☰</view></view>     
     </picker>
+    <view class="location"></view>    
     <view class="current" wx:if="{{current}}">
         <view class="degree">{{current.degree}}°</view>
         <view class="weather">{{current.weather_short}}</view>
@@ -27,7 +28,7 @@
         </view>
         <view class="modal"></view>
     </view>
-    <view class="twoDay" wx:if="{{twoDays.length>0}}">
+    <view class="twoDay" wx:if="{{current}}">
         <view class="item-box" wx:for="{{twoDays}}" wx:key="index">
             <view class="item">
                 <view wx:if="{{index==0}}">今天</view>
@@ -36,7 +37,7 @@
             </view>
             <view class="item">
                 <view>{{item.day_weather_short}}<block wx:if="{{item.day_weather != item.night_weather}}">转{{item.night_weather_short}}</block></view>
-                <view wx:if="{{current_hour < 18 && current_hour > 6}}"><image src="{{'https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/'+item.day_weather_code+'.png'}}"/></view>
+                <view wx:if="{{current_hour < 18 && current_hour >= 6}}"><image src="{{'https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/day/'+item.day_weather_code+'.png'}}"/></view>
                 <view wx:else><image src="{{'https://mat1.gtimg.com/pingjs/ext2020/weather/mobile2.0/assets/weather/night/'+item.night_weather_code+'.png'}}"/></view>
             </view>
         </view>
