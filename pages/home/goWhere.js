@@ -122,22 +122,20 @@ Page({
         }).then(res => {
             let pageIndex = self.data.pageIndex;
             let nearByList;
-            if(res.data.length>0) {
-                if(pageIndex == 1) {
-                    nearByList = res.data;
-                }else {
-                    nearByList = self.data.nearByList.concat(res.data)
-                }
+            if(pageIndex == 1) {
+                nearByList = res.data;
+            }else {
+                nearByList = self.data.nearByList.concat(res.data)
+            }
+            if(res.data.length>=10) {
                 self.setData({
                     nearByList,
                     tips: '下拉获取更多数据',
                     loading: false
                 });
             }else {
-                if(pageIndex == 1) {
-                    nearByList = [];
-                }
                 self.setData({
+                    nearByList,
                     tips: '没有更多数据了',
                     loading: false
                 });
