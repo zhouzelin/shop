@@ -88,5 +88,4 @@
       </view>
     </block>
   </view>
-  <loader loading="{{loading}}"/>
 </view>

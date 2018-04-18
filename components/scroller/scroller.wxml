@@ -1,4 +1,4 @@
-<scroll-view scroll-x="false" scroll-y="true" bindscrolltolower="scrolltolower" class="my-class">
+<scroll-view scroll-x="false" scroll-y="true" bindscrolltolower="scrolltolower" class="my-class" scroll-into-view="{{toView}}">
 	<slot />
 	<view class="tips">{{tips}}</view>
 </scroll-view>

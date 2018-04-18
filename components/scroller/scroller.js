@@ -8,6 +8,10 @@ Component({
     tips: {
       type: 'string',
       value: '下拉加载更多'
+    },
+    toView: {
+      type: 'string',
+      value: ''
     }
   },
   data: {

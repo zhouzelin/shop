@@ -1,0 +1,23 @@
+<!--searchMore.wxml-->
+<view class="main">
+    <view class="from-wrapper">
+        <view class="input-box">
+            <input type="text" placeholder="请输入地点" bindinput="handleInput" data-name="address"/>
+        </view>
+        <view class="input-box">
+            <input type="text" placeholder="请输入关键字" bindinput="handleInput" data-name="keyword"/>
+            <view class="btn" bindtap="tapSearch">搜索</view>
+        </view>
+    </view>
+    <scroller my-class="location" tips="{{tips}}" toView="{{toView}}" bind:scrolltolowerEvent="loadMore">
+        <view>
+            <view class="location-item" wx:for="{{nearByList}}" wx:key="index" bindtap="openLocation" data-info="{{item}}" id="{{index == 0 ? 'first' : '' }}">
+                <view class="title">
+                    <view>{{item.title}}</view>
+                    <view>{{item._distance}}m</view>
+                </view>
+                <view class="desc">{{item.address}}</view>
+            </view>
+        </view>
+    </scroller>
+</view>

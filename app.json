@@ -6,7 +6,8 @@
     "pages/home/eatWhat",
     "pages/home/newDetail",
     "pages/home/weather",
-    "pages/home/goWhere"
+    "pages/home/goWhere",
+    "pages/home/searchMore"
   ],
   "window":{
     "backgroundTextStyle":"dark",

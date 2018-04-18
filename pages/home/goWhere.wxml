@@ -5,6 +5,7 @@
             <view class="{{index == selectedIndex ? 'nav-item active' : 'nav-item'}}" wx:for="{{nav}}" wx:key="index" bindtap="selectIndex" data-index="{{index}}">
                 {{item.name}}
             </view>
+            <view class="nav-item more-item" data-page="searchMore" bindtap="gotoPage">more</view>
         </view>
         <scroll-view class="category-list" scroll-x scroll-left="100" scroll-into-view="{{toView}}">
             <view wx:for="{{category}}" wx:key="index" class="{{index == selectIedCIndex ? 'category-item active' : 'category-item'}}" bindtap="selectCIndex" data-index="{{index}}" id="{{'view'+item.id}}">
@@ -12,9 +13,9 @@
             </view>
         </scroll-view>
     </view>
-    <scroller bind:scrolltolowerEvent="loadMore" my-class="location" tips="{{tips}}">
+    <scroller bind:scrolltolowerEvent="loadMore" my-class="location" tips="{{tips}}" toView="{{toView2}}">
         <view>
-            <view class="location-item" bindtap="chooseLocation">
+            <view class="location-item" bindtap="chooseLocation" id="first">
                 <view class="title">
                     <view>{{location.province}}{{location.city}}{{location.district}}</view>
                     <view>定位</view>
@@ -30,5 +31,4 @@
             </view>
         </view>
     </scroller>
-    <loader loading="{{loading}}" />
 </view>

@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "搜索更多",
+    "usingComponents": {
+        "loader": "../../components/loader/loader",
+        "scroller": "../../components/scroller/scroller"
+    }
+}

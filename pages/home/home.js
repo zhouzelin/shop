@@ -16,11 +16,7 @@ Page({
     interval: 5000,
     duration: 1000,
     newData: {},
-    loading: true,
     weather: {}
-  },
-  onLoad() {
-
   },
   onReady() {
     let self = this;
@@ -28,9 +24,10 @@ Page({
     this.getWeather()
   },
   onPullDownRefresh: function () {
-    this.setData({
-      loading: true
-    })
+    wx.showLoading({
+      title: '稍等一下',
+      mask: true
+    });
     this.getNews(function () {
       wx.stopPullDownRefresh();
     })
@@ -114,9 +111,7 @@ Page({
         if (callback) {
           callback()
         }
-        this.setData({
-          loading: false
-        })
+        wx.hideLoading();
       }).
       catch(res => {
         console.log(res);

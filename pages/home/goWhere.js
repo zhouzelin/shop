@@ -15,11 +15,12 @@ Page({
         location: {},
         latitude: 0,
         longitude: 0,
-        keyword:'',
+        keyword: '',
         pageIndex: 1,
         nearByList: [],
         tips: '',
-        loading: true
+        loading: true,
+        hasMore: true
     },
     onReady() {
         let nav = near.data;
@@ -40,7 +41,8 @@ Page({
             selectIedCIndex: selectIedCIndex,
             keyword: nav[selectedIndex].children[selectIedCIndex].name,
             pageIndex: 1,
-            toView: 'view'+nav[selectedIndex].children[selectIedCIndex].id
+            toView: 'view' + nav[selectedIndex].children[selectIedCIndex].id,
+            toView2: 'first'
         })
         this.searchByKey()
     },
@@ -51,7 +53,8 @@ Page({
         this.setData({
             selectIedCIndex: selectIedCIndex,
             keyword: nav[selectedIndex].children[selectIedCIndex].name,
-            pageIndex: 1
+            pageIndex: 1,
+            toView2: 'first'
         })
         this.searchByKey()
     },
@@ -106,6 +109,15 @@ Page({
         })
     },
     searchByKey() {
+
+        if (!this.data.hasMore && this.data.pageIndex != 1) {
+            return false;
+        }
+        
+        wx.showLoading({
+            title: '稍等一下',
+            mask: true
+        });
         let self = this;
         let options = {
             location: {
@@ -122,30 +134,35 @@ Page({
         }).then(res => {
             let pageIndex = self.data.pageIndex;
             let nearByList;
-            if(pageIndex == 1) {
+            if (pageIndex == 1) {
                 nearByList = res.data;
-            }else {
+            } else {
                 nearByList = self.data.nearByList.concat(res.data)
             }
-            if(res.data.length>=10) {
+            if (res.data.length >= 10) {
                 self.setData({
                     nearByList,
                     tips: '下拉获取更多数据',
-                    loading: false
+                    hasMore: true
                 });
-            }else {
+            } else {
                 self.setData({
                     nearByList,
                     tips: '没有更多数据了',
-                    loading: false
+                    hasMore: false
                 });
             }
+            wx.hideLoading();
+        }).catch(res => {
+            wx.showToast({
+                title: res.message,
+                icon: 'none'
+            })
         })
     },
     openLocation(event) {
         let self = this;
         let info = event.currentTarget.dataset.info;
-        console.log(info) 
         let options = {
             latitude: info.location.lat,
             longitude: info.location.lng,
@@ -155,17 +172,30 @@ Page({
         let openLocation = utils.wxPromisify(wx.openLocation);
         openLocation(options)
             .then(res => {
-                console.log(res);
+                wx.showToast({
+                    title: res.errMsg,
+                    icon: 'success'
+                })
             })
             .catch(res => {
-                console.log(res);
+                wx.showToast({
+                    title: res.errMsg,
+                    icon: 'none'
+                })
             })
     },
     loadMore() {
-        let self = this;
         this.setData({
-            pageIndex: self.data.pageIndex + 1
+            pageIndex: this.data.pageIndex + 1
         })
         this.searchByKey();
+    },
+    gotoPage(event) {
+        let page = event.currentTarget.dataset.page;
+        let param = {
+            latitude: this.data.latitude,
+            longitude: this.data.longitude
+        }
+        utils.gotoPage(page, param);
     }
 })

@@ -26,11 +26,17 @@ page {
     font-weight: 700; 
     color: #168FED;
 }
+.nav .nav-item.more-item {
+    background: #C62F2F;
+    color : #fff;
+    font-size: 8pt;
+    margin: 0;
+}
 .category-list {
-    height: 24pt;
     background: #eee;
     padding: 5pt;
     white-space: nowrap;
+    box-sizing: border-box;
 } 
 .category-list .category-item {
     font-size: 10pt;
@@ -71,11 +77,4 @@ page {
 .location .location-item .title>view:first-child {
     flex: 1;
     color: #333;
-}
-scroll-view .tips {
-    text-align:center;
-    font-size:10pt;
-    color:#666;
-    height:20pt;
-    line-height:20pt;
 }
