@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "头条列表",
+    "usingComponents": {
+        "scroller": "../../components/scroller/scroller"
+    }
+}

@@ -7,7 +7,8 @@
     "pages/home/newDetail",
     "pages/home/weather",
     "pages/home/goWhere",
-    "pages/home/searchMore"
+    "pages/home/searchMore",
+    "pages/home/newsList"
   ],
   "window":{
     "backgroundTextStyle":"dark",

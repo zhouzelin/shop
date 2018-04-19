@@ -45,7 +45,7 @@
   </view>
   <!--天气模块-->
   <view class="weather-wrapper" wx:if="{{weather}}" bindtap="gotoPage" data-page="weather">
-    <view class="weather-title">—— 今日天气 ——</view>
+    <view class="weather-title"><text>今日天气</text><text>更多</text></view>
     <view class="weather-box" wx:if="{{current_hour < 18}}">
       <view class="icon-box">
         <image src="{{weather.image}}" class="icon" />
@@ -75,17 +75,15 @@
   </view>
   <!--今日热点-->
   <view class="news-wrapper" wx:if="{{newData}}">
-    <view class="news-title">—— 头条热点 ——</view>
-    <block wx:for="{{newData}}" wx:key="index">
-      <view class="news-box" bindtap="gotoNesDtail" data-url="{{item.tag_id}}">
-        <view class="content-box">
-          <view class="ms limitline2">{{item.title}}</view>
-          <view class="ss">{{item.media_name}} {{item.comment_count}}评论</view>  
-        </view>
-        <view class="icon-box" wx:if="{{item.image_url}}">
-          <image src="{{item.image_url}}"></image>
-        </view>
+    <view class="news-title" bindtap="gotoPage" data-page="newsList"><text>头条热点</text><text>更多</text></view>
+    <view  wx:for="{{newData}}" wx:key="index" class="news-box" bindtap="gotoNesDtail" data-url="{{item.tag_id}}" wx:if="{{index<3}}">
+      <view class="content-box">
+        <view class="ms limitline2">{{item.title}}</view>
+        <view class="ss">{{item.media_name}} {{item.comment_count}}评论</view>  
       </view>
-    </block>
+      <view class="icon-box" wx:if="{{item.image_url}}">
+        <image src="{{item.image_url}}"></image>
+      </view>
+    </view>
   </view>
 </view>

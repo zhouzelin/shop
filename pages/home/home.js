@@ -91,6 +91,7 @@ Page({
   },
   getNews(callback) {
     let url = 'https://m.toutiao.com/list/';
+    let time = new Date().getTime();
     let data = {
       tag: "__all__",
       ac: "wap",
@@ -98,8 +99,8 @@ Page({
       format: "json_raw",
       as: "A1851A0D60A247F",
       cp: "5AD01254474F2E1",
-      min_behot_time: "1523589968",
-      i: "1523589968"
+      min_behot_time: time,
+      i: time
     }
     let self = this;
     utils.get(url, data).

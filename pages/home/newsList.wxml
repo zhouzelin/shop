@@ -1,0 +1,23 @@
+<!--newsList.wxml-->
+<view class="main">
+    <view class="nav-box">
+        <swiper class="nav" display-multiple-items="4.5">
+            <swiper-item wx:for="{{nav}}" wx:key="index">
+                <view class="{{index == selectedIndex ? 'nav-item active' : 'nav-item'}}" bindtap="selectIndex" data-index="{{index}}" data-tag="{{item.tag}}">{{item.name}}</view>
+            </swiper-item>
+        </swiper>
+    </view>
+    <scroller my-class="location" toView="{{toView}}" tips=''>
+        <view class="news-wrapper" wx:if="{{newData}}">
+            <view  wx:for="{{newData}}" wx:key="index" class="news-box" bindtap="gotoNesDtail" data-url="{{item.tag_id}}">
+                <view class="content-box">
+                    <view class="ms limitline2">{{item.title}}</view>
+                    <view class="ss">{{item.media_name}} {{item.comment_count}}评论</view>  
+                </view>
+                <view class="icon-box" wx:if="{{item.image_url}}">
+                    <image src="{{item.image_url}}"></image>
+                </view>
+            </view>
+        </view>
+    </scroller>
+</view>

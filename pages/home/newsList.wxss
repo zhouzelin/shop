@@ -1,0 +1,56 @@
+.nav {
+    display: flex;
+    height: 31pt;
+}
+.nav-box {
+    width: 100%;
+    overflow: hidden;
+}
+.nav .nav-item {
+    flex:1;
+    font-size: 12pt;
+    height: 30pt;
+    line-height: 30pt;
+    text-align: center;
+    margin: 0 10pt;
+}
+.nav .nav-item.active {
+    border-bottom: 1px solid #168FED;
+    font-weight: 700; 
+    color: #168FED;
+}
+.news-wrapper .news-box {
+    display: flex;
+    align-items: center;
+    margin: 0 10pt;
+    border-bottom: 1pt solid #ddd;
+}
+.news-wrapper .news-box .content-box {
+    padding: 10pt 0;
+    flex: 1;
+}
+.news-wrapper .news-box .content-box .ss {
+    font-size: 8pt;
+    color: #999;
+}
+.news-wrapper .news-box .content-box .ms {
+    font-size: 12pt;
+    margin-bottom: 4pt;
+}
+.news-wrapper .news-box .icon-box {
+    width: 80pt;
+    height: 50pt;
+    overflow: hidden;
+    margin: 5pt 0 5pt 10pt; 
+    object-fit: contain;
+}
+.news-wrapper .news-box .icon-box image {
+    width: 100%;
+    height: 100%;
+}
+.location {
+    top: 31pt;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
